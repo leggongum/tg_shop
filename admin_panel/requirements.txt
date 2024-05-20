@@ -1,0 +1,5 @@
+uvicorn==0.14.0
+Django==4.2.7
+psycopg2-binary
+pillow==10.2.0
+pydantic-settings==2.2.1
