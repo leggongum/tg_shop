@@ -23,6 +23,17 @@ services:
     depends_on:
       - db
     restart: on-failure
+
+  bot:
+    build: /tg_bot
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 src/main.py'
+    env_file:
+      - .env
+    volumes:
+      - ./tg_bot:/app/.
+    depends_on:
+      - app
+    restart: on-failure
    
   nginx:
     command: nginx -g "daemon off;"
